@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c2f3f;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .title span {
+            color: #00e5ff;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+            margin: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #00e5ff;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: #fff;
+            color: #000;
+            border-radius: 10px;
+            width: 45%;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-in-out;
+        }
+
+        .timeline-item.left {
+            left: -5%;
+        }
+
+        .timeline-item.right {
+            left: 55%;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background-color: #00e5ff;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item.left::before {
+            right: -10px;
+        }
+
+        .timeline-item.right::before {
+            left: -10px;
+        }
+
+        .timeline-item h3 {
+            margin-top: 0;
+        }
+
+        .timeline-item p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Accademic <span>Details</span></div>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <h3>SSLC</h3>
+                <p><strong>Sri Bhakthanatha Swamy High School, Mandya</strong> (2017 - 2018)</p>
+                <p>I successfully completed my SSLC at Central High School, achieving a commendable score of 83.04% in the Karnataka State Board exams.</p>
+            </div>
+            <div class="timeline-item right">
+                <h3>PUC</h3>
+                <p><strong>Sri Bhakthanatha Swamy Composite PU College, B.G Nagar</strong> (2018 - 2019)</p>
+                <p>I completed my PUC at Sri Bhakthanatha Swamy Composite PU College, B.G Nagar, Mandya - Science(PCMB )  attaining a score of 80.04% in the Karnataka State Board exams.</p>
+            </div>
+            <div class="timeline-item left">
+                <h3> Bachelor of Science</h3>
+                <p><strong>P E S College of Science Arts and Commerce, Mandya</strong> (2019 - 2022)</p>
+                <p>I graduated from the P E S College of Science Arts and Commerce, Mandya achieving a CGPA of 7.95 (equivalent to 79.5%) in the Mysore University exams.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const items = document.querySelectorAll('.timeline-item');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        items.forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
